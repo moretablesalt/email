@@ -1,1 +1,9 @@
-<p>signup works!</p>
+<h3>Create an Account</h3>
+<form [formGroup]="authForm">
+  <input formControlName="username" />
+  <input formControlName="password" />
+  <input formControlName="passwordConfirmation" />
+</form>
+<div>{{authForm.controls['username'].value}}</div>
+<div>{{authForm.controls['password'].value}}</div>
+<div>{{authForm.controls['passwordConfirmation'].value}}</div>
