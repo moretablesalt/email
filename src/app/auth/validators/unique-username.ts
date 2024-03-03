@@ -1,19 +1,16 @@
 import {inject, Injectable} from "@angular/core";
 import {AbstractControl, AsyncValidator, ValidationErrors, Validator} from "@angular/forms";
-import {HttpClient} from "@angular/common/http";
 import {catchError, map, Observable, of} from "rxjs";
+import {AuthService} from "../auth.service";
 
 @Injectable({providedIn: 'root'})
 export class UniqueUsername implements AsyncValidator{
-  private http = inject(HttpClient);
+  private authService = inject(AuthService);
 
   validate(control: AbstractControl): Promise<ValidationErrors | null> | Observable<ValidationErrors | null> {
     const {value} = control;
 
-    const SERVER = 'https://api.angular-email.com/auth/username'
-
-
-    return this.http.post<any>(SERVER, {username: value}).pipe(
+    return this.authService.userNameAvailable(control.value).pipe(
       map(value => {
         if (value.available) {
           return null;
