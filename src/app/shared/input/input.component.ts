@@ -3,6 +3,7 @@ import {
   AbstractControl, Form, FormControl,
   ReactiveFormsModule,
 } from "@angular/forms";
+import {NgIf} from "@angular/common";
 
 
 @Component({
@@ -10,12 +11,13 @@ import {
   standalone: true,
   imports: [
     ReactiveFormsModule,
+    NgIf,
   ],
   templateUrl: './input.component.html',
   styleUrl: './input.component.css'
 })
 export class InputComponent implements OnInit{
-  @Input() control!: AbstractControl;
+  @Input() control!: AbstractControl | null;
   controlAsFormControl!: FormControl;
 
   ngOnInit(): void {
@@ -24,4 +26,14 @@ export class InputComponent implements OnInit{
   }
 
 
+  showErrors() {
+    if (this.control) {
+      const { dirty, errors, touched } = this.control;
+      // console.log('dirty: ' + dirty)
+      // console.log('errors: ' + errors)
+      // console.log('touched: ' + touched)
+      return dirty && errors && touched;
+    }
+    return false;
+  }
 }
