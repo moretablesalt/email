@@ -4,12 +4,27 @@
 <!--    <label>Username</label>-->
 <!--    <input formControlName="username" />-->
 <!--  </div>-->
-  <app-input inputType="text" label="Username" [control]="authForm.get('username')"></app-input>
+  <app-input
+    inputType="text"
+    label="Username"
+    [control]="authForm.get('username')">
+  </app-input>
   {{authForm.get('username')?.errors | json}}
-  <app-input inputType="password" label="Password" [control]="authForm.get('password')"></app-input>
+
+  <app-input
+    inputType="password"
+    label="Password"
+    [control]="authForm.get('password')">
+  </app-input>
   {{authForm.get('password')?.errors | json}}
-  <app-input inputType="password" label="Confirm Password" [control]="authForm.get('passwordConfirmation')"></app-input>
+
+  <app-input
+    inputType="password"
+    label="Confirm Password"
+    [control]="authForm.get('passwordConfirmation')">
+  </app-input>
   {{authForm.get('passwordConfirmation')?.errors | json}}
+
   <div>
     <button type="submit" class="ui submit button primary">Submit</button>
     {{authForm.errors |json}}
