@@ -1,6 +1,6 @@
 <div class="field">
   <label>Username</label>
-  <input [formControl]="controlAsFormControl" />
+  <input [type]="inputType" [formControl]="controlAsFormControl" />
   <div *ngIf="showErrors()" class="ui pointing red basic label">
     <p *ngIf="control?.errors?.['required']">Value is requried</p>
     <p *ngIf="control?.errors?.['minlength']">

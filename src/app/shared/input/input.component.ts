@@ -19,6 +19,7 @@ import {NgIf} from "@angular/common";
 export class InputComponent implements OnInit{
   @Input() control!: AbstractControl | null;
   controlAsFormControl!: FormControl;
+  @Input() inputType!: string;
 
   ngOnInit(): void {
     // need FormControl
