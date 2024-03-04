@@ -6,15 +6,9 @@
 <!--  </div>-->
   <app-input inputType="text" label="Username" [control]="authForm.get('username')"></app-input>
   {{authForm.get('username')?.errors | json}}
-  <div class="field">
-    <label>Password</label>
-    <input formControlName="password" />
-  </div>
+  <app-input inputType="text" label="Password" [control]="authForm.get('password')"></app-input>
   {{authForm.get('password')?.errors | json}}
-  <div class="field">
-    <label>Confirm Password</label>
-    <input formControlName="passwordConfirmation" />
-  </div>
+  <app-input inputType="text" label="Confirm Password" [control]="authForm.get('passwordConfirmation')"></app-input>
   {{authForm.get('passwordConfirmation')?.errors | json}}
   <div>
     <button type="submit" class="ui submit button primary">Submit</button>
