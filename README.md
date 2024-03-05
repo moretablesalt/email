@@ -15,3 +15,6 @@
 1. Handle authentication
 2. Create sign up api request in auth service
 3. Consume sign up api
+4. Navbar component
+5. Use behavior subject to keep track if logged in
+6. Use async pipe
