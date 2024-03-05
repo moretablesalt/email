@@ -13,7 +13,7 @@
       </ng-container>
 
       <ng-container *ngIf="!(signedin$ | async)">
-        <a class="ui item" routerLink="/" routerLinkActive="active">
+        <a class="ui item" routerLink="/" [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active">
           Sign In
         </a>
         <a class="ui item" routerLink="auth/sign-up" routerLinkActive="active">
@@ -23,6 +23,7 @@
 
     </div>
   </div>
+  <router-outlet />
 </div>
 
 <!--<ul>-->
@@ -34,4 +35,4 @@
 <!--  </li>-->
 <!--</ul>-->
 
-<router-outlet />
+
