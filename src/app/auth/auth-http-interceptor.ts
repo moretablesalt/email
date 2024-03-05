@@ -8,6 +8,14 @@ export class AuthHttpInterceptor implements HttpInterceptor{
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    return next.handle(req);
+
+    // cannot access directly so use clone
+    const modifiedReq = req.clone({
+      withCredentials: true
+    });
+
+    console.log(modifiedReq);
+
+    return next.handle(modifiedReq);
   }
 }

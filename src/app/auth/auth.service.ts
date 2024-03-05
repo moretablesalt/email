@@ -35,14 +35,14 @@ export class AuthService {
   }
 
   signUp(credentials: SignupCredentials) {
-    return this.http.post<SignupResponse>(this.SERVER_URL + this.SIGNUP_PATH, credentials, {withCredentials: true}).pipe(
+    return this.http.post<SignupResponse>(this.SERVER_URL + this.SIGNUP_PATH, credentials).pipe(
       // error will skip tap
       tap(() => {this.signedin$.next(true)})
     );
   }
 
   checkAuth() {
-    return this.http.get(this.SERVER_URL + '/auth/signedin', {withCredentials: true}).pipe(
+    return this.http.get(this.SERVER_URL + '/auth/signedin').pipe(
       tap(response => console.log(response))
     )
   }
