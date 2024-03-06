@@ -32,6 +32,13 @@ export class SigninComponent {
     const {username, password} = this.authForm.value;
 
     if (username && password)
-    this.authService.signin({username, password}).subscribe();
+    this.authService.signin({username, password}).subscribe({
+      next: () => {},
+      error: ({error}) => {
+        if (error.username || error.password) {
+          this.authForm.setErrors({credentials: true});
+        }
+      }
+    });
   }
 }

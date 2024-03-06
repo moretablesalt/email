@@ -28,3 +28,9 @@
 
 9. Use interceptor to modify "withCredentials" property
 10. Use clone to modify the request
+11. Update signedin$ based on response of isAuthenticated
+12. Create signout component
+13. Signout during onInit of signout component
+14. Create signin api request
+15. Create signin UI
+16. Add invalid credentials error
