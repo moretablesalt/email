@@ -42,3 +42,7 @@
 #### Section 23
 
 1. Set up guard for inbox (only signed in users can access)
+
+#### Section 24
+
+1. Generate inbox components
