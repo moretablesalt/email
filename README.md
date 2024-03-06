@@ -38,3 +38,7 @@
 18. Create inbox home component
 19. Add routing for inbox
 20. Automatically route to inbox upon successful signin
+
+#### Section 23
+
+1. Set up guard for inbox (only signed in users can access)

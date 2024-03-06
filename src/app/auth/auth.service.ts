@@ -38,7 +38,7 @@ export class AuthService {
   USERNAME_PATH = '/auth/username';
   SIGNUP_PATH = '/auth/signup';
 
-  signedin$ = new BehaviorSubject(false);
+  signedin$ = new BehaviorSubject<boolean | null>(null);
 
   userNameAvailable(username: string) {
     return this.http.post<UsernameAvailableResponse>(this.SERVER_URL + this.USERNAME_PATH, {username: username});
