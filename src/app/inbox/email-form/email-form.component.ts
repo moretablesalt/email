@@ -30,4 +30,12 @@ export class EmailFormComponent implements OnInit{
     });
   }
 
+  onSubmit() {
+    if (this.emailForm.invalid) {
+      return;
+    }
+
+    console.log(this.emailForm.getRawValue());
+  }
+
 }
