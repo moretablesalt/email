@@ -39,6 +39,7 @@ export class AuthService {
   SIGNUP_PATH = '/auth/signup';
 
   signedin$ = new BehaviorSubject<boolean | null>(null);
+  username = '';
 
   userNameAvailable(username: string) {
     return this.http.post<UsernameAvailableResponse>(this.SERVER_URL + this.USERNAME_PATH, {username: username});
@@ -47,25 +48,41 @@ export class AuthService {
   signUp(credentials: SignupCredentials) {
     return this.http.post<SignupResponse>(this.SERVER_URL + this.SIGNUP_PATH, credentials).pipe(
       // error will skip tap
-      tap(() => {this.signedin$.next(true)})
+      tap(({username}) => {
+        this.signedin$.next(true);
+        this.username = username;
+      })
     );
   }
 
   checkAuth() {
     return this.http.get<SignedinResponse>(this.SERVER_URL + '/auth/signedin').pipe(
-      tap(({authenticated}) => this.signedin$.next(authenticated))
-    )
+      tap(({authenticated, username}) => {
+        this.signedin$.next(authenticated);
+        this.username = username;
+        }
+      )
+    );
   }
 
   signout() {
     return this.http.post(this.SERVER_URL + '/auth/signout', {}).pipe(
-        tap(() => this.signedin$.next(false)
+        tap(() =>
+        {
+          this.signedin$.next(false)
+          this.username = '';
+        }
+
       ));
   }
 
   signin(credentials: SigninCredentials) {
-    return this.http.post(this.SERVER_URL + '/auth/signin', credentials).pipe(
-      tap(() => this.signedin$.next(true))
-    );
+    return this.http.post<{username: string}>(this.SERVER_URL + '/auth/signin', credentials).pipe(
+      tap(({username}) =>
+      {
+        this.signedin$.next(true)
+        this.username = username;
+      }
+    ));
   }
 }
