@@ -46,3 +46,6 @@
 #### Section 24
 
 1. Generate inbox components
+2. Create inbox index which shows the summary of the email (left side)
+3. Handle the right panel
+4. Create a placeholder else show EmailShow
