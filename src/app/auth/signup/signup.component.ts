@@ -3,6 +3,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {MatchPassword} from "../validators/match-password";
 import {UniqueUsername} from "../validators/unique-username";
 import {AuthService} from "../auth.service";
+import {Router} from "@angular/router";
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -30,7 +31,8 @@ export class SignupComponent implements OnInit{
   }, {validators: [this.matchPassword.validate]})
   constructor(private matchPassword: MatchPassword,
               private userNameValidator: UniqueUsername,
-              private authService: AuthService) {
+              private authService: AuthService,
+              private router: Router) {
   }
   ngOnInit(): void {
   }
@@ -43,7 +45,7 @@ export class SignupComponent implements OnInit{
     if (typeof username === 'string' && typeof password === 'string' && typeof passwordConfirmation === 'string') {
       this.authService.signUp({username, password, passwordConfirmation}).subscribe({
         next: value => {
-          // navigate to some route
+          this.router.navigateByUrl('/inbox');
         },
         error: err => {
           if (!err.status) {

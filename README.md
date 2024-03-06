@@ -37,3 +37,4 @@
 17. Create inbox module
 18. Create inbox home component
 19. Add routing for inbox
+20. Automatically route to inbox upon successful signin
