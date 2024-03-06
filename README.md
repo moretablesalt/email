@@ -34,3 +34,6 @@
 14. Create signin api request
 15. Create signin UI
 16. Add invalid credentials error
+17. Create inbox module
+18. Create inbox home component
+19. Add routing for inbox
