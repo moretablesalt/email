@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {ModalComponent} from "../../shared/modal/modal.component";
 import {CommonModule, NgIf} from "@angular/common";
+import {EmailFormComponent} from "../email-form/email-form.component";
 
 @Component({
   selector: 'app-email-create',
@@ -8,7 +9,8 @@ import {CommonModule, NgIf} from "@angular/common";
   imports: [
     ModalComponent,
     NgIf,
-    CommonModule
+    CommonModule,
+    EmailFormComponent
   ],
   templateUrl: './email-create.component.html',
   styleUrl: './email-create.component.css'
