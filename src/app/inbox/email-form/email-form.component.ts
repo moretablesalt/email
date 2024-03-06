@@ -8,7 +8,7 @@ import {InputComponent} from "../../shared/input/input.component";
   standalone: true,
   imports: [
     ReactiveFormsModule,
-    InputComponent
+    InputComponent,
   ],
   templateUrl: './email-form.component.html',
   styleUrl: './email-form.component.css'

@@ -3,17 +3,22 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {EmailService} from "../email.service";
 import {switchMap} from "rxjs";
 import {Email} from "../email";
+import {EmailReplyComponent} from "../email-reply/email-reply.component";
+import {ReactiveFormsModule} from "@angular/forms";
 
 @Component({
   selector: 'app-email-show',
   standalone: true,
-  imports: [],
+  imports: [
+    EmailReplyComponent,
+    ReactiveFormsModule
+  ],
   templateUrl: './email-show.component.html',
   styleUrl: './email-show.component.css'
 })
 export class EmailShowComponent implements OnInit{
 
-  email: Email | undefined;
+  email!: Email;
 
   constructor(private route: ActivatedRoute, private emailService: EmailService) {}
 
