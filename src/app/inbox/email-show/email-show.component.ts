@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
+import {EmailService} from "../email.service";
 
 @Component({
   selector: 'app-email-show',
@@ -10,18 +11,14 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class EmailShowComponent implements OnInit{
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute, private emailService: EmailService) {}
 
   ngOnInit(): void {
     // 2 ways to accesss
     // route params
     this.route.params.subscribe(({id}) => {
-      console.log('route: ' + id);
+      this.emailService.getEmail(id).subscribe(email => {console.log(email)});
     });
-
-    // snapshot
-    // might cause an issue if component is resused
-    console.log(this.route.snapshot.params['id']);
   }
 
 
